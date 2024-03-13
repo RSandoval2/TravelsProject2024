@@ -1,0 +1,44 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using TravelsProject2024.EN;
+using TravelsProject2024.DAL;
+
+
+namespace TravelsProject2024.BL
+{
+    public class RoleBL
+    {
+        public async Task<int> CreateAsync(Role role)
+        {
+            return await RoleDAL.CreateAsync(role);
+        }
+
+        public async Task<int> UpdateAsync(Role role)
+        {
+            return await RoleDAL.UpdateAsync(role);
+        }
+
+        public async Task<int> DeleteAsync(Role role)
+        {
+            return await RoleDAL.DeleteAsync(role);
+        }
+
+        public async Task<Role> GetByIdAsync(Role role)
+        {
+            return await RoleDAL.GetByIdAsync(role);
+        }
+
+        public async Task<List<Role>> GetAllAsync()
+        {
+            return await RoleDAL.GetAllAsync();
+        }
+
+        public async Task<List<Role>> SearchAsync(Role role)
+        {
+            return await RoleDAL.SearchAsync(role);
+        }
+    }
+}
