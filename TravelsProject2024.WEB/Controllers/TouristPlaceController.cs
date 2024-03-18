@@ -9,9 +9,13 @@ using TravelsProject2024.BL;
 using TravelsProject2024.EN;
 using TravelsProject2024.WEB.Helpers;
 using TravelsProject2024.DAL;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AdsProject.GraphicUserInterface.Controllers
 {
+    [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme, Roles = "Administrador, Usuario")]
+
     public class TouristPlaceController : Controller
     {
         TouristPlaceBL touristPlaceBL = new TouristPlaceBL();

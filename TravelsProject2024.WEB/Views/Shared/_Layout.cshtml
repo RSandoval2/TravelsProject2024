@@ -7,54 +7,21 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/TravelsProject2024.WEB.styles.css" asp-append-version="true" />
-
-    <!-- Estilos personalizados para una apariencia más atractiva -->
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
-            color: #343a40;
-        }
-
-        header {
-            background-color: #007bff;
-            color: #fff;
-            padding: 10px 0;
-        }
-
-            header .navbar-brand {
-                font-size: 1.5rem;
-                font-weight: bold;
-            }
-
-        main {
-            padding: 20px 0;
-        }
-
-        footer {
-            background-color: #343a40;
-            color: #fff;
-            padding: 10px 0;
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-        }
-
-            footer a {
-                color: #fff;
-            }
-    </style>
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-light bg-transparent">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
+                       
+
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Administrador"))
+                        {
+
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Vehicles" asp-action="Index">Vehiculos</a>
                         </li>
@@ -64,6 +31,30 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="TouristPlace" asp-action="Index">lugares Turisticos</a>
                         </li>
+                         <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="User" asp-action="Index">Usuarios</a>
+                        </li>
+                          <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="LogOut">Cerrar sesión</a>
+                            </li>
+                            }
+
+                                @if (User.Identity.IsAuthenticated && User.IsInRole("Usuario"))
+                        {
+
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Vehicles" asp-action="Index">Vehiculos</a>
+                        </li>
+                       
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="TouristPlace" asp-action="Index">lugares Turisticos</a>
+                        </li>
+                       
+                          <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="LogOut">Cerrar sesión</a>
+                            </li>
+                            }
+
                     </ul>
                 </div>
             </div>
@@ -75,8 +66,6 @@
             @RenderBody()
         </main>
     </div>
-
- 
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

@@ -7,7 +7,7 @@ using TravelsProject2024.EN;
 
 namespace TravelsProject2024.WEB.Controllers
 {
-    //[Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme, Roles = "Administrador")]
+    [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme, Roles = "Administrador")]
 
     public class RoleController : Controller
     {
