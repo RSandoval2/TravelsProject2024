@@ -114,7 +114,7 @@ namespace AdsProject.GraphicUserInterface.Controllers
         {
             var touristPlaceDB = await touristPlaceBL.GetByIdAsync(touristPlace.Id);
             ViewBag.Error = "";
-            return View(touristPlace);
+            return View(touristPlaceDB);
         }
 
         // Acción que recibe la confirmación para eliminar el registro
@@ -125,7 +125,7 @@ namespace AdsProject.GraphicUserInterface.Controllers
             try
             {
                 TouristPlaces touristPlaceDB = await touristPlaceBL.GetByIdAsync(touristPlace.Id);
-                touristPlaceDB.TouristPlacesImages = await touristPlaceImageBL.SearchAsync(new TouristPlaceImage() { Id = touristPlaceDB.Id });
+                touristPlaceDB.TouristPlacesImages = await touristPlaceImageBL.SearchAsync(new TouristPlaceImage() { IdTouristPlaces = touristPlaceDB.Id });
                 if (touristPlaceDB.TouristPlacesImages.Count() > 0)
                 {
                     foreach (var touristPlaceImage in touristPlaceDB.TouristPlacesImages)
@@ -144,6 +144,6 @@ namespace AdsProject.GraphicUserInterface.Controllers
                     touristPlaceBD = new TouristPlaces();
                 return View(touristPlaceBD);
             }
-        }
+            }
     }
 }

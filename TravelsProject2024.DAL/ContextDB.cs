@@ -21,8 +21,8 @@ namespace TravelsProject2024.DAL
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Data source = RENE\SQLEXPRESS; Initial catalog = TravelsDB;
-                           Integrated Security = True; Encrypt = false;
+            optionsBuilder.UseSqlServer(@"Data source = TravelsProject.mssql.somee.com; Initial catalog = TravelsProject;
+                           user id=Sandoval22_SQLLogin_1;pwd=Sandoval22; Encrypt = false;
                            TrustServerCertificate = True");
         }
     }

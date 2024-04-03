@@ -226,5 +226,32 @@ namespace TravelsProject2024.WEB.Controllers
                 return View(actualUser);
             }
         }
+
+        //Acción que permite mostrar el formulario para el registro de usuario
+        [AllowAnonymous]
+        public IActionResult Register() 
+        {
+            return View();
+        }
+
+        //Acción que recibe los datos del registro de los usuarios
+        [AllowAnonymous]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register(User usuario)
+        {
+            try
+            {
+                usuario.IdRole = 2;
+                usuario.Status = (byte)User_Status.ACTIVO;
+                int result = await UserBL.CreateAsync(usuario);
+                return RedirectToAction("Login", "Usuario");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = ex.Message;
+                return View(usuario);
+            }
+        }
     }
 }
