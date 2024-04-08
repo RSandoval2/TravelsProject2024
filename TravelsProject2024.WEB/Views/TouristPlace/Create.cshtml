@@ -4,7 +4,7 @@
     ViewData["Title"] = "Crear";
 }
 
-<h1>Crear</h1>
+<h1>Agregar nuevo destino</h1>
 
 <hr />
 <div class="row">
@@ -30,11 +30,14 @@
             <hr>
             <div class="form-group">
                 <label class="control-label"></label>
-                <input type="file" name="formFiles" multiple />
+                <label for="formFiles" class="btn" style="background-color: #4CAF50; color: white; border-radius: 4px; padding: 6px 12px; cursor: pointer;">
+                   Subir foto
+                    <input id="formFiles" type="file" name="formFiles" multiple style="display: none;" />
+                </label>
             </div>
             <hr>
             <div class="form-group">
-                <input type="submit" value="Crear" class="btn btn-primary" />
+                <input type="submit" value="Crear destino" class="btn btn-primary" />
             </div>
            
         </form>
